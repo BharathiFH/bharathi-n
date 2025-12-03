@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Annual Performance Appraisal – Your Name</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f6f8fa;
+      }
+      header {
+        background: #0d6efd;
+        color: white;
+        padding: 40px;
+        text-align: center;
+      }
+      section {
+        padding: 30px;
+        max-width: 900px;
+        margin: auto;
+        background: white;
+        margin-top: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+      .stats {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+      .stat-box {
+        width: 30%;
+        padding: 20px;
+        background: #e9ecef;
+        border-radius: 10px;
+        text-align: center;
+      }
+      footer {
+        text-align: center;
+        padding: 20px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Your Name – 2024 Performance Summary</h1>
+      <p>Delivering Results. Driving Impact.</p>
+    </header>
+
+    <section>
+      <h2>🌟 Key Achievements</h2>
+      <ul>
+        <li>Completed 12 major projects successfully</li>
+        <li>Improved team efficiency by 35%</li>
+        <li>Automated 5 manual workflows</li>
+        <li>Mentored 2 junior team members</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>📊 Performance Metrics</h2>
+      <div class="stats">
+        <div class="stat-box">
+          <h3>Projects</h3>
+          <p>12 completed</p>
+        </div>
+        <div class="stat-box">
+          <h3>Automation</h3>
+          <p>5 workflows</p>
+        </div>
+        <div class="stat-box">
+          <h3>Efficiency</h3>
+          <p>+35%</p>
+        </div>
+      </div>
+
+      <canvas id="myChart" style="margin-top: 40px"></canvas>
+
+      <script>
+        const ctx = document.getElementById("myChart");
+
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: ["Q1", "Q2", "Q3", "Q4"],
+            datasets: [
+              {
+                label: "Quarterly Performance Score",
+                data: [78, 82, 91, 95],
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+      </script>
+    </section>
+
+    <section>
+      <h2>🚀 Goals for Next Year</h2>
+      <ul>
+        <li>Lead at least 3 large-scale projects</li>
+        <li>Achieve 40% more automation</li>
+        <li>Expand cross-team collaboration</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>Created by Your Name • Performance Appraisal 2024</p>
+    </footer>
+  </body>
+</html>
