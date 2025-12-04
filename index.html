@@ -3,53 +3,323 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Annual Performance Appraisal – Your Name</title>
+    <title>Annual Performance Appraisal – Bharathi N</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background: #f6f8fa;
+        background: linear-gradient(135deg, #f6f8fa 0%, #e9ecef 100%);
+        animation: fadeIn 0.8s ease-in;
       }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      @keyframes countUp {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
       header {
-        background: #0d6efd;
+        background: linear-gradient(135deg, #0d6efd 0%, #0056b3 100%);
         color: white;
         padding: 40px;
         text-align: center;
+        animation: slideInUp 0.8s ease-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.5em;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      .employee-info {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        font-size: 0.95em;
+        opacity: 0.95;
+      }
+
+      .employee-info span {
+        padding: 8px 18px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .employee-info span:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+      }
+
       section {
         padding: 30px;
-        max-width: 900px;
+        max-width: 1200px;
         margin: auto;
         background: white;
         margin-top: 20px;
         border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        animation: slideInUp 0.8s ease-out;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
+
+      section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      section:nth-child(2) {
+        animation-delay: 0.1s;
+        animation-fill-mode: both;
+      }
+
+      section:nth-child(3) {
+        animation-delay: 0.2s;
+        animation-fill-mode: both;
+      }
+
+      section:nth-child(4) {
+        animation-delay: 0.3s;
+        animation-fill-mode: both;
+      }
+
+      section:nth-child(5) {
+        animation-delay: 0.4s;
+        animation-fill-mode: both;
+      }
+
+      section:nth-child(6) {
+        animation-delay: 0.5s;
+        animation-fill-mode: both;
+      }
+
       .stats {
         display: flex;
         justify-content: space-between;
         margin-top: 20px;
+        gap: 20px;
+        flex-wrap: wrap;
       }
+
       .stat-box {
-        width: 30%;
-        padding: 20px;
-        background: #e9ecef;
+        flex: 1;
+        min-width: 200px;
+        padding: 25px;
+        background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
         border-radius: 10px;
         text-align: center;
+        transition: all 0.3s ease;
+        animation: scaleIn 0.6s ease-out;
+        border: 2px solid transparent;
       }
+
+      .stat-box:nth-child(1) {
+        animation-delay: 0.1s;
+        animation-fill-mode: both;
+      }
+
+      .stat-box:nth-child(2) {
+        animation-delay: 0.2s;
+        animation-fill-mode: both;
+      }
+
+      .stat-box:nth-child(3) {
+        animation-delay: 0.3s;
+        animation-fill-mode: both;
+      }
+
+      .stat-box:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+        border-color: #0d6efd;
+        background: linear-gradient(135deg, #0d6efd 0%, #0056b3 100%);
+        color: white;
+      }
+
+      .stat-box h3 {
+        margin: 0 0 10px 0;
+        font-size: 1.2em;
+      }
+
+      .stat-box .stat-value {
+        font-size: 2em;
+        font-weight: bold;
+        color: #0d6efd;
+        transition: color 0.3s ease;
+      }
+
+      .stat-box:hover .stat-value {
+        color: white;
+      }
+
+      .chart-container {
+        position: relative;
+        height: 400px;
+        margin-top: 40px;
+        animation: fadeIn 1s ease-in;
+      }
+
+      .chart-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+      }
+
+      .chart-card {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .chart-card:hover {
+        transform: scale(1.02);
+      }
+
+      .chart-card h3 {
+        margin-top: 0;
+        color: #0d6efd;
+        text-align: center;
+      }
+
+      .chart-card canvas {
+        max-height: 300px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      ul li {
+        padding: 12px;
+        margin: 8px 0;
+        background: #f8f9fa;
+        border-radius: 5px;
+        border-left: 4px solid #0d6efd;
+        animation: slideInUp 0.5s ease-out;
+        transition: all 0.3s ease;
+      }
+
+      ul li:nth-child(1) {
+        animation-delay: 0.1s;
+        animation-fill-mode: both;
+      }
+
+      ul li:nth-child(2) {
+        animation-delay: 0.2s;
+        animation-fill-mode: both;
+      }
+
+      ul li:nth-child(3) {
+        animation-delay: 0.3s;
+        animation-fill-mode: both;
+      }
+
+      ul li:nth-child(4) {
+        animation-delay: 0.4s;
+        animation-fill-mode: both;
+      }
+
+      ul li:hover {
+        transform: translateX(10px);
+        background: #e9ecef;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
       footer {
         text-align: center;
         padding: 20px;
         margin-top: 20px;
+        color: #6c757d;
+        animation: fadeIn 1s ease-in;
+      }
+
+      @media (max-width: 768px) {
+        .stats {
+          flex-direction: column;
+        }
+
+        .stat-box {
+          width: 100%;
+        }
+
+        .chart-wrapper {
+          grid-template-columns: 1fr;
+        }
+
+        header h1 {
+          font-size: 1.8em;
+        }
       }
     </style>
   </head>
   <body>
     <header>
-      <h1>Your Name – 2024 Performance Summary</h1>
+      <h1>Bharathi N – 2024 Performance Summary</h1>
       <p>Delivering Results. Driving Impact.</p>
+      <div class="employee-info">
+        <span><strong>Emp ID:</strong> FH2121</span>
+        <span><strong>Email:</strong> bharathi.n@foodhub.com</span>
+        <span><strong>Mobile:</strong> 8489686346</span>
+      </div>
     </header>
 
     <section>
@@ -67,44 +337,49 @@
       <div class="stats">
         <div class="stat-box">
           <h3>Projects</h3>
-          <p>12 completed</p>
+          <p class="stat-value" data-target="12">0</p>
+          <p>completed</p>
         </div>
         <div class="stat-box">
           <h3>Automation</h3>
-          <p>5 workflows</p>
+          <p class="stat-value" data-target="5">0</p>
+          <p>workflows</p>
         </div>
         <div class="stat-box">
           <h3>Efficiency</h3>
-          <p>+35%</p>
+          <p class="stat-value" data-target="35">0</p>
+          <p>% improvement</p>
         </div>
       </div>
+    </section>
 
-      <canvas id="myChart" style="margin-top: 40px"></canvas>
+    <section>
+      <h2>📈 Quarterly Performance Trend</h2>
+      <div class="chart-container">
+        <canvas id="quarterlyChart"></canvas>
+      </div>
+    </section>
 
-      <script>
-        const ctx = document.getElementById("myChart");
-
-        new Chart(ctx, {
-          type: "bar",
-          data: {
-            labels: ["Q1", "Q2", "Q3", "Q4"],
-            datasets: [
-              {
-                label: "Quarterly Performance Score",
-                data: [78, 82, 91, 95],
-              },
-            ],
-          },
-          options: {
-            responsive: true,
-            scales: {
-              y: {
-                beginAtZero: true,
-              },
-            },
-          },
-        });
-      </script>
+    <section>
+      <h2>📊 Detailed Analytics</h2>
+      <div class="chart-wrapper">
+        <div class="chart-card">
+          <h3>Performance Score by Quarter</h3>
+          <canvas id="barChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Skill Distribution</h3>
+          <canvas id="doughnutChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Project Completion Timeline</h3>
+          <canvas id="lineChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Competency Radar</h3>
+          <canvas id="radarChart"></canvas>
+        </div>
+      </div>
     </section>
 
     <section>
@@ -117,7 +392,228 @@
     </section>
 
     <footer>
-      <p>Created by Your Name • Performance Appraisal 2024</p>
+      <p>Created by Bharathi N (FH2121) • Performance Appraisal 2024</p>
     </footer>
+
+    <script>
+      // Animated counter for stat boxes
+      function animateCounter(element) {
+        const target = parseInt(element.getAttribute("data-target"));
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            element.textContent = target + (element.getAttribute("data-target") === "35" ? "%" : "");
+            clearInterval(timer);
+          } else {
+            element.textContent = Math.floor(current) + (element.getAttribute("data-target") === "35" ? "%" : "");
+          }
+        }, 16);
+      }
+
+      // Initialize counters when page loads
+      window.addEventListener("load", () => {
+        const statValues = document.querySelectorAll(".stat-value");
+        statValues.forEach((stat) => {
+          animateCounter(stat);
+        });
+      });
+
+      // Chart configuration with animations
+      const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: {
+          duration: 2000,
+          easing: "easeInOutQuart",
+        },
+        plugins: {
+          legend: {
+            display: true,
+            position: "top",
+          },
+        },
+      };
+
+      // Quarterly Performance Line Chart
+      const quarterlyCtx = document.getElementById("quarterlyChart");
+      new Chart(quarterlyCtx, {
+        type: "line",
+        data: {
+          labels: ["Q1", "Q2", "Q3", "Q4"],
+          datasets: [
+            {
+              label: "Performance Score",
+              data: [78, 82, 91, 95],
+              borderColor: "#0d6efd",
+              backgroundColor: "rgba(13, 110, 253, 0.1)",
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4,
+              pointRadius: 6,
+              pointHoverRadius: 8,
+              pointBackgroundColor: "#0d6efd",
+              pointBorderColor: "#fff",
+              pointBorderWidth: 2,
+            },
+          ],
+        },
+        options: {
+          ...chartOptions,
+          scales: {
+            y: {
+              beginAtZero: false,
+              min: 70,
+              max: 100,
+              ticks: {
+                callback: function (value) {
+                  return value + "%";
+                },
+              },
+            },
+          },
+        },
+      });
+
+      // Bar Chart
+      const barCtx = document.getElementById("barChart");
+      new Chart(barCtx, {
+        type: "bar",
+        data: {
+          labels: ["Q1", "Q2", "Q3", "Q4"],
+          datasets: [
+            {
+              label: "Quarterly Performance Score",
+              data: [78, 82, 91, 95],
+              backgroundColor: [
+                "rgba(13, 110, 253, 0.8)",
+                "rgba(13, 110, 253, 0.8)",
+                "rgba(13, 110, 253, 0.8)",
+                "rgba(13, 110, 253, 0.8)",
+              ],
+              borderColor: "#0d6efd",
+              borderWidth: 2,
+              borderRadius: 5,
+            },
+          ],
+        },
+        options: {
+          ...chartOptions,
+          scales: {
+            y: {
+              beginAtZero: false,
+              min: 70,
+              max: 100,
+            },
+          },
+        },
+      });
+
+      // Doughnut Chart for Skills
+      const doughnutCtx = document.getElementById("doughnutChart");
+      new Chart(doughnutCtx, {
+        type: "doughnut",
+        data: {
+          labels: ["Technical Skills", "Leadership", "Communication", "Problem Solving", "Innovation"],
+          datasets: [
+            {
+              data: [92, 88, 85, 90, 87],
+              backgroundColor: [
+                "rgba(13, 110, 253, 0.8)",
+                "rgba(25, 135, 84, 0.8)",
+                "rgba(255, 193, 7, 0.8)",
+                "rgba(220, 53, 69, 0.8)",
+                "rgba(108, 117, 125, 0.8)",
+              ],
+              borderColor: "#fff",
+              borderWidth: 3,
+            },
+          ],
+        },
+        options: {
+          ...chartOptions,
+          cutout: "60%",
+        },
+      });
+
+      // Line Chart for Project Timeline
+      const lineCtx = document.getElementById("lineChart");
+      new Chart(lineCtx, {
+        type: "line",
+        data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          datasets: [
+            {
+              label: "Projects Completed",
+              data: [1, 0, 2, 1, 1, 2, 1, 1, 1, 1, 1, 0],
+              borderColor: "#198754",
+              backgroundColor: "rgba(25, 135, 84, 0.1)",
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4,
+              pointRadius: 5,
+              pointHoverRadius: 7,
+            },
+          ],
+        },
+        options: {
+          ...chartOptions,
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                stepSize: 1,
+              },
+            },
+          },
+        },
+      });
+
+      // Radar Chart for Competencies
+      const radarCtx = document.getElementById("radarChart");
+      new Chart(radarCtx, {
+        type: "radar",
+        data: {
+          labels: ["Technical", "Leadership", "Communication", "Problem Solving", "Innovation", "Teamwork"],
+          datasets: [
+            {
+              label: "Current Year",
+              data: [92, 88, 85, 90, 87, 89],
+              backgroundColor: "rgba(13, 110, 253, 0.2)",
+              borderColor: "#0d6efd",
+              borderWidth: 3,
+              pointBackgroundColor: "#0d6efd",
+              pointBorderColor: "#fff",
+              pointHoverBackgroundColor: "#fff",
+              pointHoverBorderColor: "#0d6efd",
+            },
+            {
+              label: "Previous Year",
+              data: [85, 80, 82, 83, 80, 85],
+              backgroundColor: "rgba(108, 117, 125, 0.2)",
+              borderColor: "#6c757d",
+              borderWidth: 2,
+              pointBackgroundColor: "#6c757d",
+              pointBorderColor: "#fff",
+            },
+          ],
+        },
+        options: {
+          ...chartOptions,
+          scales: {
+            r: {
+              beginAtZero: true,
+              max: 100,
+              ticks: {
+                stepSize: 20,
+              },
+            },
+          },
+        },
+      });
+    </script>
   </body>
 </html>
